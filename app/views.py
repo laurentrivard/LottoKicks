@@ -7,7 +7,7 @@ from werkzeug import check_password_hash, generate_password_hash, secure_filenam
 import random, os
 from flask.ext.mail import Message
 from config import ADMINS, STATES, UPLOAD_FOLDER, ALLOWED_EXTENSIONS, POST_PER_PAGE
-from collections import Counter
+# from collections import Counter
 from datetime import datetime, timedelta
 from flask import Response
 

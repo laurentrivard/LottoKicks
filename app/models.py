@@ -58,7 +58,7 @@ class Kicks(db.Model):
 	contest_start = db.Column(db.DateTime)
 	contest_end = db.Column(db.DateTime)
 	winner_id = db.Column(db.Integer, db.ForeignKey('user.id'))
-	text = db.Column(db.String)
+	text = db.Column(db.String(128))
 
 	def contestIsActive(self):
 		if self.contest_start < datetime.now() and self.contest_end > datetime.now():
