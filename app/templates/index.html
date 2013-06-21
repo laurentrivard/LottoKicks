@@ -1,0 +1,35 @@
+<!-- inherit from head.html -->
+{% extends 'head.html' %}
+{% block content %}
+
+
+{% include 'flash.html' %}
+{% for post in posts.items %}
+
+	{% include 'kick_post.html' %}
+<!-- 	{% if g.user.role == 1  %}
+		{% if post.winner_id == 0 %}
+		<form action="/end_contest/{{post.id}}" method="post" name="endContest">
+			<input type="submit" value="End Contest">
+		</form>
+		
+		{% else %}
+			<input type="button" value="Contest has ended">
+		{% endif %}
+		<hr>
+	{% else %}
+		{% if post.winner_id == 0 %}
+			<form action="/buy_tickets/{{post.id}}" method="post" name="buyTickets">
+				<input type="submit" value="Buy Raffle Tickets!">
+			</form>
+		{% else %}
+			<input type="button" value="Contest has ended">
+		{% endif %}
+		<hr>
+	{% endif %} -->
+{% endfor %}
+<div class="prevnext">
+{% if posts.has_prev %}<a href="{{ url_for('index', page = posts.prev_num) }}"><< Newer posts</a>{% else %}<< Newer posts{% endif %} | 
+{% if posts.has_next %}<a href="{{ url_for('index', page = posts.next_num) }}">Older posts >></a>{% else %}Older posts >>{% endif %}
+</div>
+{% endblock %}

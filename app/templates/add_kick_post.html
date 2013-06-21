@@ -1,0 +1,18 @@
+{% extends 'head.html' %}
+{% block content %}
+<form action="" method="post" name="post" enctype="multipart/form-data">
+	{{form.hidden_tag()}}
+	<table>
+		<tr>
+			<td> Shoe name: {{form.shoe_name(size=60, max_length= 64)}} </td>
+			<td> Shoe size: {{form.shoe_size}} </td> 
+			<td> Shoe Condition: {{form.shoe_condition}}</td> 
+			<td> Description : {{form.text}}</td>
+			<input type="file" name="file">
+			<input type="file" name="file2">
+			<input type="file" name="file3">
+			<input type="file" name="file4">
+			<td> <input type="submit" value="Add"> </td>
+		</tr>
+	</table>
+{% endblock %}

@@ -1,0 +1,54 @@
+body, h1, ul, li {
+	margin: 0;
+	padding: 0;
+	border: 0;
+}
+body {
+	background: grey;
+}
+#container {
+	width: 600px;
+	margin: -40px auto;
+	position: relative;
+}
+h1 {
+	width: 262px; height: 226px; margin: 0 auto; position: relative; top: 100px;
+
+}
+div#slideshow {
+	width: 600px; height: 600px; padding: 15px 0 0 12px;
+	background: yellow;
+	overflow: scroll;
+	position: relative;
+	z-index: 5;
+}
+
+
+
+div#slideshow ul#nav {
+	display: none;
+	list-style: none;
+	position: relative; top: 210px; z-index: 15;
+}
+	div#slideshow ul#nav li#prev {
+		float: left; margin: 0 0 0 40px;
+	}
+	div#slideshow ul#nav li#next {
+		float: right; margin: 0 50px 0 0;
+	}
+	div#slideshow ul#nav li a {
+		display: block; width: 80px; height: 80px; text-indent: -9999px;
+	}
+		div#slideshow ul#nav li#prev a {
+			background: url(../static/pics/prev.png);
+		}
+		div#slideshow ul#nav li#next a {
+			background: url(../static/pics/next.jpg);
+		}
+
+	div#slideshow ul#slides {
+		list-style: none;
+	}
+		div#slideshow ul#slides li {
+			margin: 0 0 20px 0;
+		}

@@ -1,0 +1,38 @@
+<div id="shoe_post" class="text-center">
+ 	<div id="shoe">
+		<div id="img">
+			<img src="../static/pics/{{post.picture}}"></td>
+		</div>
+			<div class="winner">
+
+				<br>
+				{% if not post.winner_id == 0 %}
+					Winner: {{post.firstname}} from {{post.city}}, {{post.state}}
+				{% elif g.user %}
+					You have bought {{post.num_tickets}} tickets so far
+				{% else %}
+				{% endif %}
+			</div>	<br>
+				{% if g.user.role == 1  %}
+			{% if post.winner_id == 0 %}
+			<form action="/end_contest/{{post.id}}" method="post" name="endContest">
+				<input class="btn btn-warning" type="submit" value="End Contest">
+			</form>
+			
+			{% else %}
+				<input class="btn btn-danger" type="button" value="Contest has ended">
+			{% endif %}
+			<hr>
+		{% else %}
+			{% if post.winner_id == 0 %}
+				<form action="/buy_tickets/{{post.id}}" method="post" name="buyTickets">
+					<input class="btn btn-success" type="submit" value="Buy Raffle Tickets!">
+				</form>
+			{% else %}
+				<input class="btn btn-danger" type="button" value="Contest has ended">
+			{% endif %}
+			<hr>
+		{% endif %}
+
+	</div>
+</div> 

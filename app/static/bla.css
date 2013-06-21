@@ -1,0 +1,62 @@
+body {
+background-color:#fff;
+position:relative;
+font-size:14px;
+font-family:arial;
+}
+
+.mask {
+float:left;
+width:600px;
+height:300px;
+overflow:hidden;
+margin:40px;
+}
+
+ul.images {
+position:relative;
+top:0;
+left:0;
+}
+
+ul.images li {
+position:absolute;
+top:0;
+left:0;
+}
+
+ul.triggers {
+position:absolute;
+top:410px;
+left:80px;
+}
+
+ul.triggers li {
+float:left;
+font:bold 16px arial;
+cursor:pointer;
+background-color:#ccc;
+color:#000;
+margin:0 5px;
+padding:10px;
+}
+
+ul.triggers li.selected {
+background-color:red;
+color:#000;
+}
+
+.control {
+position:absolute;
+top:480px;
+color:#fff;
+cursor:pointer;
+}
+
+.prev {
+left:120px;
+}
+
+.next {
+left:180px;
+}

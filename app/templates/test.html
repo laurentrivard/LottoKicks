@@ -1,0 +1,88 @@
+<html>
+<head>
+<script type="text/javascript" src="../static/js/jquery.js"></script>
+<link rel="stylesheet" type="text/css" href="../static/bla.css">
+
+<script type="text/javascript">
+$(document).ready(function () {
+	var triggers = $('ul.triggers li');
+	var images = $('ul.images li');
+	var lastElem = triggers.length-1;
+	var target;
+	triggers.first().addClass('selected');
+	images.hide().first().show();
+
+	function sliderResponse(target) {
+	    images.fadeOut(300).eq(target).fadeIn(300);
+	    triggers.removeClass('selected').eq(target).addClass('selected');
+	}
+
+	triggers.click(function() {
+	    if ( !$(this).hasClass('selected') ) {
+	        target = $(this).index();
+	        sliderResponse(target);
+	        resetTiming();
+	    }
+	});
+
+	$('.next').click(function() {
+	    target = $('ul.triggers li.selected').index();
+	    if ( target === lastElem ) { target = 0; }
+	    else { target = target+1; }
+	    sliderResponse(target);
+	    resetTiming();
+	});
+	$('.prev').click(function() {
+	    target = $('ul.triggers li.selected').index();
+	    lastElem = triggers.length-1;
+	    if ( target === 0 ) { target = lastElem; }
+	    else { target = target-1; }
+	    sliderResponse(target);
+	    resetTiming();
+	});
+
+	function sliderTiming() {
+	    target = $('ul.triggers li.selected').index();
+	    if ( target === lastElem ) { target = 0; }
+	    else { target = target+1; }
+	    sliderResponse(target);
+	}
+
+	var timingRun = setInterval(function() { sliderTiming(); },5000);
+	function resetTiming() {
+	    clearInterval(timingRun);
+	    timingRun = setInterval(function() { sliderTiming(); },5000);
+	}
+})
+</script>
+</head>
+
+
+<body>
+<div class="mask">
+<ul class="images">
+   <li>
+      <img width="500" height="300" src="../static/pics/galaxy.jpeg" />
+   </li>
+   <li>
+      <img width="370" src="../static/pics/corks.jpg" />
+   </li>
+    <li>
+      <img width="370" src="../static/pics/sb.jpg" />
+   </li>
+   <li>
+      <img width="370" src="../static/pics/tiffany.jpeg" />
+   </li>
+</ul>
+</div>
+
+<ul class="triggers">
+   <li>1</li>
+   <li>2</li>
+   <li>3</li>
+   <li>4</li>
+</ul>
+<span class="control prev">Prev</span>
+<span class="control next">Next</span>
+</body>
+</html>

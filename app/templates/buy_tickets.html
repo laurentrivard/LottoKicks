@@ -1,0 +1,140 @@
+{% extends 'head.html' %}
+
+{% block content %}
+
+
+
+
+
+<script type="text/javascript" src="../static/js/jquery.js"></script>
+<link rel="stylesheet" type="text/css" href="../static/bla.css">
+
+<script type="text/javascript">
+$(document).ready(function () {
+	var triggers = $('ul.triggers li');
+	var images = $('ul.images li');
+	var lastElem = triggers.length-1;
+	var target;
+	triggers.first().addClass('selected');
+	images.hide().first().show();
+
+	function sliderResponse(target) {
+	    images.fadeOut(300).eq(target).fadeIn(300);
+	    triggers.removeClass('selected').eq(target).addClass('selected');
+	}
+
+	triggers.click(function() {
+	    if ( !$(this).hasClass('selected') ) {
+	        target = $(this).index();
+	        sliderResponse(target);
+	        resetTiming();
+	    }
+	});
+
+	$('.next').click(function() {
+	    target = $('ul.triggers li.selected').index();
+	    if ( target === lastElem ) { target = 0; }
+	    else { target = target+1; }
+	    sliderResponse(target);
+	    resetTiming();
+	});
+	$('.prev').click(function() {
+	    target = $('ul.triggers li.selected').index();
+	    lastElem = triggers.length-1;
+	    if ( target === 0 ) { target = lastElem; }
+	    else { target = target-1; }
+	    sliderResponse(target);
+	    resetTiming();
+	});
+
+	function sliderTiming() {
+	    target = $('ul.triggers li.selected').index();
+	    if ( target === lastElem ) { target = 0; }
+	    else { target = target+1; }
+	    sliderResponse(target);
+	}
+
+	var timingRun = setInterval(function() { sliderTiming(); },5000);
+	function resetTiming() {
+	    clearInterval(timingRun);
+	    timingRun = setInterval(function() { sliderTiming(); },5000);
+	}
+})
+</script>
+
+
+<div class="mask">
+<ul class="images">
+   <li>
+      <img width="600" height="300" src="../static/pics/{{post.picture}}" />
+   </li>
+   <li>
+      <img width="600" height="300" src="../static/pics/{{post.picture2}}" />
+   </li>
+    <li>
+      <img width="600" height="300" src="../static/pics/{{post.picture3}}" />
+   </li>
+   <li>
+      <img width="600" height="300" src="../static/pics/{{post.picture4}}" />
+   </li>
+</ul>
+</div>
+
+<ul class="triggers">
+   <li>1</li>
+   <li>2</li>
+   <li>3</li>
+   <li>4</li>
+</ul>
+<span class="control prev" style="color: black;">Prev</span>
+<span class="control next" style="color: black;">Next</span>
+ <br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- {% include 'kick_post.html' %} <br> -->
+{% if state == True %}
+	<form action="" method="post" name="buy">
+	{{form.hidden_tag()}}
+
+	{{form.amount}}
+	<input type="submit" value="Buy">
+{% else %}
+	The contest has ended
+{% endif %}
+<!--
+<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+<input type="hidden" name="cmd" value="_s-xclick">
+<input type="hidden" name="hosted_button_id" value="DVQU5VWCQFS5L">
+<table>
+<tr><td><input type="hidden" name="on0" value="Tickets">Tickets</td></tr><tr><td><select name="os0">
+	<option value="1 ticket">1 ticket $2.49 USD</option>
+	<option value="2 tickets">2 tickets $3.99 USD</option>
+	<option value="6 tickets">6 tickets $9.99 USD</option>
+	<option value="10 tickets">10 tickets $14.99 USD</option>
+	<option value="15 tickets">15 tickets $19.99 USD</option>
+	<option value="25 tickets">25 tickets $29.99 USD</option>
+</select> </td></tr>
+</table>
+<input type="hidden" name="currency_code" value="USD">
+<input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_buynowCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+<img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
+</form>
+
+<script type="text/javascript" src="../static/js/paypal.js"></script> -->
+
+{% endblock %}

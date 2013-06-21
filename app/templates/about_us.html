@@ -1,0 +1,50 @@
+{% extends 'head.html' %}
+
+{% block content %}
+
+
+<h1> Our Mission </h1>
+
+We are two students from Harvard that want to give back to the sneaker community. We have both been "sneakerheads" for many years
+and we have seen the increase in popularity of the Jordan sneakers. Bla bla bla. With popularity comes demand, and with demand comes 
+higher prices. Bla bla bla we are offering a platform that allows people to buy a raffle ticket, or more, for a shoe. If your raffle ticket is picked, 
+we ship you the shoes, for FREE. blablabla write some more text here andrew. 
+
+
+<h1>How It Works</h1>
+We are two students from Harvard that want to give back to the sneaker community. We have both been "sneakerheads" for many years
+and we have seen the increase in popularity of the Jordan sneakers. Bla bla bla. With popularity comes demand, and with demand comes 
+higher prices. Bla bla bla we are offering a platform that allows people to buy a raffle ticket, or more, for a shoe. If your raffle ticket is picked, 
+we ship you the shoes, for FREE. blablabla write some more text here andrew. 
+
+
+<h1>About Us </h1>
+We are two students from Harvard that want to give back to the sneaker community. We have both been "sneakerheads" for many years
+and we have seen the increase in popularity of the Jordan sneakers. Bla bla bla. With popularity comes demand, and with demand comes 
+higher prices. Bla bla bla we are offering a platform that allows people to buy a raffle ticket, or more, for a shoe. If your raffle ticket is picked, 
+we ship you the shoes, for FREE. blablabla write some more text here andrew. 
+
+
+<h1> Contact Us </h1>
+
+<form id='contactus' method='post' accept-charset='UTF-8'>
+	{{form.hidden_tag()}}
+
+	<span class="red">*</span>Required fields <br>
+
+	You full name<span class="red">*</span> <br>
+	{{form.fullname(size=80)}} <br>
+	<br>
+	Your email address<span class="red">*</span> <br>
+	{{form.email (size = 80)}} <br>
+	<br>
+	Message<span class="red">*</span> <br>
+	{{form.message}} <br>
+	<br>
+
+	<input type="submit">
+</form>
+
+
+
+{% endblock %}
