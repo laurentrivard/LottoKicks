@@ -1,0 +1,9 @@
+{{fullname}} has left a comment: 
+
+{{message}}
+
+
+
+
+
+Reply to: {{email}}

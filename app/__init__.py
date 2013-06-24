@@ -5,6 +5,7 @@ import os
 from flask.ext.login import LoginManager
 from config import basedir, UPLOAD_FOLDER
 from werkzeug import secure_filename
+from flaskext.babel import Babel
 
 
 UPLOAD_FOLDER = 'app/static/pics'
@@ -19,7 +20,10 @@ lm = LoginManager()
 lm.setup_app(app)
 lm.login_view = 'login'
 
+babel = Babel(app)
+
 mail = Mail(app)
+app.extensions['mail'] = mail
 
 from app import views, models
 

@@ -9,7 +9,8 @@ from flask.ext.mail import Message
 from config import ADMINS, STATES, UPLOAD_FOLDER, ALLOWED_EXTENSIONS, POST_PER_PAGE
 # from collections import Counter
 from datetime import datetime, timedelta
-from flask import Response
+from flask import Response, jsonify
+from emails import send_feedback
 
 @app.route('/')
 @app.route('/index')
@@ -38,10 +39,17 @@ def index(page =1):
 
 @app.route('/test2', methods = ["POST", "GET"])
 def test2():
+	jsondict = {}
 	kicks = Kicks.query.order_by(Kicks.date_added.desc()).all()
-	return Response(response= kicks,
-					status = 200,
-					mimetype = 'text/json')
+	jsondict["kicks"] = []
+	for k in kicks:
+		jsonkick = {}
+		jsonkick["shoe_name"] = k.shoe_name
+		jsonkick["shoe_id"] = k.shoe_size
+		jsondict["kicks"].append(jsonkick) 
+	resp = jsonify(jsondict)
+	resp.status_code = 200
+	return resp
 
 
 
@@ -54,7 +62,7 @@ def login():
 			session['user_id'] = user.id
 			return redirect(request.args.get("next") or url_for("index"))
 		else:
-			flash('Wront username/password')
+			flash('Wrong username/password')
 	return render_template('login.html',
 		title = 'Sign In',
 		form = form)
@@ -226,16 +234,9 @@ def about():
 	form = ContactUs()
 
 	if form.validate_on_submit():
-		# msg = Message('Customer feedback', sender= ADMINS[0], recipients='info@lotto-kicks.com')
-		# msg.body = 'hello'#form.fullname.data# + " (" + form.email.data + ") said: \n " + form.message.data)
-		# # msg.html = '<b> HTML </b> body'
-		# mail.send(msg)
-
-		msg = Message('test subject', sender = ADMINS[0], recipients = 'laurentrivard@gmail.com')
-		msg.body = 'text body'
-		msg.html = '<b>HTML</b> body'
-		mail.send(msg)
-
+		subject = "Feedback from %s" % form.fullname.data
+		send_feedback(form.fullname.data, form.email.data, form.message.data)
+		flash("Thank you! Your email has been received.")
 	return render_template('about_us.html',
 		form = form)
 

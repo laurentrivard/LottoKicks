@@ -1,5 +1,5 @@
-from flask.ext.wtf import Form, TextField, BooleanField, PasswordField, validators, SelectField, SubmitField, DateTimeField, TextAreaField
-from flask.ext.wtf import Required
+from flask.ext.wtf import Form, TextField, BooleanField, PasswordField, validators, SelectField, SubmitField, DateTimeField, TextAreaField, RecaptchaField
+from flask.ext.wtf import Required, EqualTo, Email
 from datetime import datetime, timedelta
 from config import STATES, COUNTRIES
 
@@ -21,9 +21,9 @@ class AddKicksForm(Form):
 class SignUpForm(Form):
 	firstname = TextField('firstname', validators =[Required()])
 	lastname = TextField('lastname', validators =[Required()])
-	email = TextField('email', validators =[Required()])
+	email = TextField('email', validators =[Required(), Email()])
 	password = PasswordField('password', validators =[Required()])
-	confirm_password =  PasswordField('confirm_password', validators =[Required()])
+	confirm_password =  PasswordField('confirm_password', validators =[Required(), EqualTo('password', message="Passwords must match")])
 	address_street = TextField('address_street', validators =[Required()])
 	address_city = TextField('address_city', validators =[Required()])
 	address_state = SelectField('address_state', choices= STATES, validators =[Required()])
@@ -57,6 +57,7 @@ class ContactUs(Form):
 	fullname = TextField('fullname', validators=[Required()])
 	email = TextField('email', validators=[Required()])
 	message = TextAreaField('message', validators=[Required()])
+	recaptcha = RecaptchaField()
 
 
 

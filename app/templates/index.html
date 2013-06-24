@@ -32,4 +32,12 @@
 {% if posts.has_prev %}<a href="{{ url_for('index', page = posts.prev_num) }}"><< Newer posts</a>{% else %}<< Newer posts{% endif %} | 
 {% if posts.has_next %}<a href="{{ url_for('index', page = posts.next_num) }}">Older posts >></a>{% else %}Older posts >>{% endif %}
 </div>
+
+<!-- twitter timeline --> 
+<a class="twitter-timeline" data-dnt="true" href="https://twitter.com/lottokicks" data-widget-id="349181447950700544">Tweets by @lottokicks</a>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");
+</script>
+
+
+
 {% endblock %}

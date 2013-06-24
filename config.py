@@ -21,7 +21,7 @@ MAIL_USERNAME = 'laurentrivard'
 MAIL_PASSWORD = 'Acelx3148'
 
 # administrator list
-ADMINS = ['laurentrivard@gmail.com']
+ADMINS = ['laurentrivard@gmail.com', 'info@lotto-kicks.com']
 
 
 #States and provinces
@@ -43,3 +43,9 @@ UPLOAD_FOLDER = 'app/static/pics'
 ALLOWED_EXTENSIONS = set(['png', 'jpg', 'gif', 'jpeg'])
 
 POST_PER_PAGE = 5
+
+RECAPTCHA_USE_SSL = False
+RECAPTCHA_PUBLIC_KEY = '6LfvReMSAAAAAGzHm0kRwtaU7nO0_x-Vo4b3RGUN'
+RECAPTCHA_PRIVATE_KEY = '6LfvReMSAAAAALcGbHdu4GZNSlPIbbYfi5CvVcHb'
+RECAPTCHA_OPTIONS = {'theme': 'white'}
+

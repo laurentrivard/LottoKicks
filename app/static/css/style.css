@@ -56,5 +56,45 @@
 	font-size: 150%;
 }
 .mask {
-	background-color: grey;
+	background-color: black;
+}
+
+body {
+	background-color: blue;
+}
+.container {
+	background-color: red;
+	width: 1200px;
+	padding-top: 63px;
+}
+.nav {
+	font-size: 15px;
+color:#FF9900;
+height: 30px;
+}
+
+#contactus {
+	background-color: green;
+}
+
+
+
+
+
+
+/*new new new new */
+
+#primary {
+	float: left;
+	margin: 0 -30% 0 0;
+	width: 100%;
+	background-color: green;
+}
+
+.centered-layout
+{
+	margin: auto !important;
+	max-width: 1000px !important;
+	padding-left: 15px !important;
+	padding-right: 15px !important;
 }
